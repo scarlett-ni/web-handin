@@ -5,6 +5,7 @@ const app = express()
 const PORT = 3000
 
 app.use(logger)
+app.use(express.urlencoded({ extended: true }))
 
 app.use('/assets', express.static('public'))
 app.use('/photos', express.static('public'))
@@ -14,6 +15,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/posts', (request, response) =>{
+    console.log(request.query)
     response.send('Browse our appreciation wall')
 })
 
@@ -41,8 +43,12 @@ app.get('/add', (request, response) =>{
 })
 
 app.post('/add', (request, response) =>{
-    response.send('Thank you for adding to the appreciation wall!')
+    console.log(`Appreciation submission: `, request.body)
+    response.send('Thank you for appreciating our community member!')
 })
+
+
+
 
 app.listen(PORT, () => {
   console.log(`👋 Started server on port ${PORT}`)
