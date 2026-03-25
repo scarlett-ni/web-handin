@@ -1,0 +1,25 @@
+body{
+    background: linear-gradient(white, lightpink);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "montserrat", sans-serif;
+    padding: 20px;
+}
+img{
+    width: 500px;
+}
+
+p{
+    padding: 5px;
+}
+
+@media (max-width: 1231px) {
+    body{
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 1500px) {
+    body{
+        font-size: 1.8rem;
+    }
+}
