@@ -50,6 +50,15 @@ app.post('/add', (request, response) =>{
     response.send('Thank you for appreciating our community member!')
 })
 
+app.get('/api/v1/posts', (request, response) => {
+    response.json({
+        posts: [
+            {name: 'Tomas Pereda', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina'},
+            {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper'},
+            
+        ]
+    })
+})
 
 
 
