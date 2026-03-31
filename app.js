@@ -22,18 +22,24 @@ app.get('/posts', (request, response) =>{
     response.send('Browse our appreciation wall')
 })
 
-app.get('/posts/:codeperson', (request, response) => {
+app.get('/people/:codeperson', (request, response) => {
   const codeId = request.params.codeperson
 
   response.send(`These are the posts for ${codeId}`)
 })
 
-app.get('/posts/:codeperson/:postId', (request, response) => {
+app.get('/posts/:postId', (request, response) => {
+    const postId = request.params.postId
+
+  response.send(`The post ID is ${postId}.`)
+
+app.get('/people/:codeperson/posts/:postId', (request, response) => {
     const codeId = request.params.codeperson
     const postId = request.params.postId
 
   response.send(`This is an appreciation post for ${codeId} and the post ID is ${postId}.`)
 })
+
 app.get('/about', (request, response) =>{
     response.send('<h1>Appreciation Wall</h1><p>Introducing Appreciation Wall @CODE</p>')
 })
@@ -55,7 +61,7 @@ app.get('/api/v1/posts', (request, response) => {
         posts: [
             {name: 'Tomas Pereda', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina'},
             {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper'},
-            
+
         ]
     })
 })
