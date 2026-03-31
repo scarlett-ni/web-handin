@@ -32,7 +32,7 @@ app.get('/posts/:codeperson/:postId', (request, response) => {
   response.send(`This is an appreciation post for ${codeId} and the post ID is ${postId}.`)
 })
 app.get('/about', (request, response) =>{
-    response.send('Introducing Appreciation Wall @CODE')
+    response.send('<h1>Appreciation Wall</h1><p>Introducing Appreciation Wall @CODE</p>')
 })
 
 app.get('/add', (request, response) =>{
