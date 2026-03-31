@@ -79,6 +79,17 @@ app.get('/api/v1/posts/:postId', (request, response) => {
 
 
 
+app.get('/api/v1/people/:postId', (request, response) => {
+    response.json({
+        posts: [
+            {name: 'Tomas Pereda', codeperson: 'tomas-p', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina', postId: 1},
+            {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper', postId: 2},
+
+        ]
+    })
+})
+
+
 app.listen(PORT, () => {
   console.log(`👋 Started server on port ${PORT}`)
 })
