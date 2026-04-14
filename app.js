@@ -93,9 +93,9 @@ app.post('/posts', (request, response) => {
     const post = new Post({
         slug: 'post-1',
         number: 1,
-        name: 'Tomas Pereda',
-        from: 'Cristina',
-        message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3',
+        name: request.body.codeperson,
+        from: request.body.from,
+        message: request.body.message,
 
     })
     post.save()
