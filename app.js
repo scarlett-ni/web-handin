@@ -4,10 +4,21 @@ import { logger } from './middlewares/logger.js'
 const app = express()
 const PORT = 3000
 
+const posts = [
+    "1",
+    "2"
+]
+
+posts.forEach(post => {
+    '<li>' + post + '</li>'
+})
+
 app.set('view engine', 'ejs')
 
 app.use(logger)
 app.use(express.urlencoded({ extended: true }))
+
+
 
 app.use('/assets', express.static('public'))
 app.use('/photos', express.static('public'))
@@ -18,7 +29,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/posts', (request, response) =>{
-    response.render('posts/index')
+    response.render('posts/index', {posts: posts})
 })
 
 app.get('/people/:codeperson', (request, response) => {

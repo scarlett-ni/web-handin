@@ -8,8 +8,9 @@
     <main>
         <p>Our appreciation posts: </p>
         <ul>
-            <li><a href="/posts/1">1</a></li>
-            <li><a href="/posts/2">2</a></li>
+            <% posts.forEach(post => { %>
+                <li><%= post %></li>
+            <% }) %>
         </ul>
 
         
