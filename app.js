@@ -8,8 +8,19 @@ const PORT = 3000
 mongoose.connect('mongodb+srv://admin:kEkLgwIm0ucsSMvN@appreciationwallcode.3n8uwgv.mongodb.net/appreciationwall?appName=AppreciationWallCODE')
     .then(() => console.log('💽 Database connected'))
     .catch(error => console.error(error))
-    
-const posts = [
+
+const postSchema = new mongoose.Schema({
+    number: Number,
+    slug: { type: String, unique: true, required: true },
+    name: {type: String, required: true },
+    message: {type: String, required: true },
+    from: String
+})
+
+
+
+
+    const posts = [
     {number: '1', slug: 'post-1'},
     {number: '2', slug: 'post-2'}
 ]
