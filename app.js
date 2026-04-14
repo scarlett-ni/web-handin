@@ -1,13 +1,14 @@
 import express from 'express'
 import { logger } from './middlewares/logger.js'
 import mongoose from 'mongoose'
+import 'dotenv/config'
 
 
 
 const app = express()
-const PORT = 3000
 
-mongoose.connect('mongodb+srv://admin:kEkLgwIm0ucsSMvN@appreciationwallcode.3n8uwgv.mongodb.net/appreciationwall?appName=AppreciationWallCODE')
+
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('💽 Database connected'))
     .catch(error => console.error(error))
 
@@ -186,6 +187,6 @@ app.get('/posts/:slug/delete',async (request, response) => {
 })
 
 
-app.listen(PORT, () => {
-  console.log(`👋 Started server on port ${PORT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`👋 Started server on port ${process.env.PORT}`)
 })
