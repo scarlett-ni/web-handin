@@ -80,7 +80,7 @@ app.post('/posts', (request, response) => {
     const post = new Post({
         slug: request.body.slug,
         number: request.body.number,
-        name: request.body.codeperson,
+        name: request.body.name,
         from: request.body.from,
         message: request.body.message,
 
