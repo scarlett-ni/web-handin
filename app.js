@@ -55,18 +55,7 @@ app.get('/people/:codeperson', (request, response) => {
   response.send(`These are the posts for ${codeId}`)
 })
 
-app.get('/posts/:postId', (request, response) => {
-    const postId = request.params.postId
 
-  response.send(`The post ID is ${postId}.`)
-})
-
-  app.get('/people/:codeperson/:postId', (request, response) => {
-    const codeId = request.params.codeperson
-    const postId = request.params.postId
-
-  response.send(`This is an appreciation post for ${codeId} and the post ID is ${postId}.`)
-})
 
 app.get('/about', (request, response) =>{
     response.send('<h1>Appreciation Wall</h1><p>Introducing Appreciation Wall @CODE</p>')
