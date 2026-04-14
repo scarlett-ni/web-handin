@@ -2,6 +2,8 @@ import express from 'express'
 import { logger } from './middlewares/logger.js'
 import mongoose from 'mongoose'
 
+
+
 const app = express()
 const PORT = 3000
 
@@ -21,10 +23,6 @@ const Post = mongoose.model('Post', postSchema)
 
 
 
-const posts = [
-    {number: '1', slug: 'post-1'},
-    {number: '2', slug: 'post-2'}
-]
 
 posts.forEach(post => {
     '<li>' + post + '</li>'
@@ -57,9 +55,7 @@ app.get('/people/:codeperson', (request, response) => {
 
 
 
-app.get('/about', (request, response) =>{
-    response.send('<h1>Appreciation Wall</h1><p>Introducing Appreciation Wall @CODE</p>')
-})
+
 
 app.get('/posts/new', (request, response) => {
     response.render('posts/new')
@@ -80,8 +76,8 @@ app.post('/add', (request, response) =>{
 
 app.post('/posts', (request, response) => {
     const post = new Post({
-        slug: 'post-1',
-        number: 1,
+        slug: request.body.slug,
+        number: request.body.number,
         name: request.body.codeperson,
         from: request.body.from,
         message: request.body.message,
@@ -103,27 +99,7 @@ app.get('/api/v1/posts', (request, response) => {
     })
 })
 
-app.get('/api/v1/posts/:postId', (request, response) => {
-    response.json({
-        posts: [
-            {name: 'Tomas Pereda', codeperson: 'tomas-p', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina', postId: 1},
-            {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper', postId: 2},
 
-        ]
-    })
-})
-
-
-
-app.get('/api/v1/people/:postId', (request, response) => {
-    response.json({
-        posts: [
-            {name: 'Tomas Pereda', codeperson: 'tomas-p', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina', postId: 1},
-            {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper', postId: 2},
-
-        ]
-    })
-})
 
 
 app.listen(PORT, () => {
