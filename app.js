@@ -106,6 +106,26 @@ app.post('/posts', (request, response) => {
        .catch((error) => response.send('Error: The message could not be sent.'))
 })
 
+app.post('/cookie/:slug', async (request, response) => {
+    try {
+        const post = await Post.findOneAndUpdate(
+      { slug: request.params.slug }, 
+      request.body
+    )
+    
+  }catch (error) {
+    console.error(error)
+    response.send('Error: The post could not be updated.')
+  }
+})
+
+
+
+
+
+
+
+
 app.get('/people/:codeperson', (request, response) => {
   const codeId = request.params.codeperson
 
