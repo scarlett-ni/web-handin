@@ -58,6 +58,23 @@ app.get('/posts/new', (request, response) => {
     response.render('posts/new')
 
 })
+
+app.get('/posts/:slug',async (request, response) => {
+    try {
+    const slug = request.params.slug
+    const post = await Post.findOne({ slug:slug }).exec()
+
+    response,render('posts/show', {
+        post: post
+    })
+    }catch(error) {
+        console.error(error)
+        response.status(404).send('Could not find the post you\'re looking for.')
+    }
+
+})
+
+
 app.post('/posts', (request, response) => {
     const post = new Post({
         slug: request.body.slug,
