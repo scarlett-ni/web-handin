@@ -22,10 +22,6 @@ const postSchema = new mongoose.Schema({
 const Post = mongoose.model('Post', postSchema)
 
 
-const posts = [
-    {number: '1', slug: 'post-1', name: 'Tomas Pereda', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', from: 'Cristina'},
-    {number: '2', slug: 'post-2', name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', from:'Jesper'}
-]
 
 posts.forEach(post => {
     '<li>' + post + '</li>'
@@ -46,7 +42,10 @@ app.get('/', (request, response) => {
 })
 
 app.get('/posts', (request, response) =>{
-    response.render('posts/index', {posts: posts})
+    const posts = []
+
+    response.render('posts/index', {
+        posts: posts})
 })
 
 app.get('/posts/new', (request, response) => {
