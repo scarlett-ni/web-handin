@@ -13,10 +13,7 @@ app.use('/assets', express.static('public'))
 app.use('/photos', express.static('public'))
 
 app.get('/', (request, response) => {
-    response.send(`
-        <h1>Appreciation Wall</h1>
-        <p>This is appreciation Wall @CODE!</p>
-        `)
+    response.render('index')
 })
 
 app.get('/posts', (request, response) =>{
