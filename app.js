@@ -22,7 +22,10 @@ const postSchema = new mongoose.Schema({
 const Post = mongoose.model('Post', postSchema)
 
 
-
+const posts = [
+    {number: '1', slug: 'post-1'},
+    {number: '2', slug: 'post-2'}
+]
 
 posts.forEach(post => {
     '<li>' + post + '</li>'
@@ -32,7 +35,6 @@ app.set('view engine', 'ejs')
 
 app.use(logger)
 app.use(express.urlencoded({ extended: true }))
-
 
 
 app.use('/assets', express.static('public'))
