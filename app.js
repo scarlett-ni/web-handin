@@ -49,33 +49,10 @@ app.get('/posts', (request, response) =>{
     response.render('posts/index', {posts: posts})
 })
 
-app.get('/people/:codeperson', (request, response) => {
-  const codeId = request.params.codeperson
-
-  response.send(`These are the posts for ${codeId}`)
-})
-
-
-
-
-
 app.get('/posts/new', (request, response) => {
     response.render('posts/new')
 
 })
-
-app.get('/add', (request, response) =>{
-    const name = "CODEr"
-    const message = `Hello, ${name}!`
-
-    response.send(`${message} Write your appreciation for a CODE community member here!`)
-})
-
-app.post('/add', (request, response) =>{
-    console.log(`Appreciation submission: `, request.body)
-    response.send('Thank you for appreciating our community member!')
-})
-
 app.post('/posts', (request, response) => {
     const post = new Post({
         slug: request.body.slug,
@@ -89,6 +66,31 @@ app.post('/posts', (request, response) => {
        .then(() => response.send('Post sent'))
        .catch((error) => response.send('Error: The message could not be sent.'))
 })
+
+app.get('/people/:codeperson', (request, response) => {
+  const codeId = request.params.codeperson
+
+  response.send(`These are the posts for ${codeId}`)
+})
+
+
+
+
+
+
+
+app.get('/add', (request, response) =>{
+    const name = "CODEr"
+    const message = `Hello, ${name}!`
+
+    response.send(`${message} Write your appreciation for a CODE community member here!`)
+})
+
+app.post('/add', (request, response) =>{
+    console.log(`Appreciation submission: `, request.body)
+    response.send('Thank you for appreciating our community member!')
+})
+
 
 
 app.get('/api/v1/posts', (request, response) => {
