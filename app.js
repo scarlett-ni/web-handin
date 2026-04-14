@@ -10,7 +10,7 @@ mongoose.connect('mongodb+srv://admin:kEkLgwIm0ucsSMvN@appreciationwallcode.3n8u
     .catch(error => console.error(error))
 
 const postSchema = new mongoose.Schema({
-    number: Number,
+    number: { type: Number, unique: true},
     slug: { type: String, unique: true, required: true },
     name: {type: String, required: true },
     message: {type: String, required: true },
@@ -21,7 +21,7 @@ const Post = mongoose.model('Post', postSchema)
 
 
 
-    const posts = [
+const posts = [
     {number: '1', slug: 'post-1'},
     {number: '2', slug: 'post-2'}
 ]
@@ -83,6 +83,21 @@ app.post('/add', (request, response) =>{
     console.log(`Appreciation submission: `, request.body)
     response.send('Thank you for appreciating our community member!')
 })
+
+app.post('/posts', (request, response) => {
+    const post = new Post({
+        slug: 'post-1',
+        number: 1,
+        name: 'Tomas Pereda',
+        from: 'Cristina',
+        message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3',
+
+    })
+    post.save()
+    
+    response.send('Post sent')
+})
+
 
 app.get('/api/v1/posts', (request, response) => {
     response.json({
