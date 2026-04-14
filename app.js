@@ -63,8 +63,9 @@ app.get('/posts/:slug',async (request, response) => {
     try {
     const slug = request.params.slug
     const post = await Post.findOne({ slug:slug }).exec()
+    if(!post) throw new Error('Post not found')
 
-    response,render('posts/show', {
+    response.render('posts/show', {
         post: post
     })
     }catch(error) {
