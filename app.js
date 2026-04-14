@@ -17,6 +17,7 @@ const postSchema = new mongoose.Schema({
     from: String
 })
 
+const Post = mongoose.model('Post', postSchema)
 
 
 
