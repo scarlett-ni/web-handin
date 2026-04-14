@@ -5,6 +5,10 @@ import mongoose from 'mongoose'
 const app = express()
 const PORT = 3000
 
+mongoose.connect('mongodb+srv://admin:kEkLgwIm0ucsSMvN@appreciationwallcode.3n8uwgv.mongodb.net/appreciationwall?appName=AppreciationWallCODE')
+    .then(() => console.log('💽 Database connected'))
+    .catch(error => console.error(error))
+    
 const posts = [
     {number: '1', slug: 'post-1'},
     {number: '2', slug: 'post-2'}
