@@ -119,7 +119,19 @@ app.post('/cookie/:slug', async (request, response) => {
   }
 })
 
-
+app.post('/cookie/:slug', async (request, response) => {
+    try {
+        const post = await Post.findOneAndUpdate(
+      { slug: request.params.slug }, 
+      request.body,
+      { new: true }
+    )
+    response.redirect(`/posts/$post.slug}`)
+  }catch (error) {
+    console.error(error)
+    response.send('Error: The post could not be created.')
+  }
+})
 
 
 
