@@ -174,7 +174,16 @@ app.get('/api/v1/posts', (request, response) => {
     })
 })
 
-
+app.get('/posts/:slug/delete',async (request, response) => {
+    try {
+        await Post.findOneAndDelete({ slug: request.params.slug })
+    
+    response.redirect('/posts')
+  }catch (error) {
+    console.error(error)
+    response.send('Error: No post was deleted.')
+  }
+})
 
 
 app.listen(PORT, () => {
