@@ -20,7 +20,11 @@ const postSchema = new mongoose.Schema({
 })
 
 const Post = mongoose.model('Post', postSchema)
-    posts.forEach(post => {
+
+
+
+
+posts.forEach(post => {
     '<li>' + post + '</li>'
 })
 
