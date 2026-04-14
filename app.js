@@ -40,10 +40,18 @@ app.get('/', (request, response) => {
 })
 
 app.get('/posts', async (request, response) =>{
-    const posts = await Post.find({}).exec()
+    try {
+        const posts = await Post.find({}).exec()
 
-    response.render('posts/index', {
-        posts: posts})
+        response.render('posts/index', {
+            posts: posts})
+        
+    }catch(error) {
+        console.error(error)
+        response.render('posts/index', {
+            posts: []
+        })
+    }
 })
 
 app.get('/posts/new', (request, response) => {
