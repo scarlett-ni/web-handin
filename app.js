@@ -72,6 +72,11 @@ app.get('/about', (request, response) =>{
     response.send('<h1>Appreciation Wall</h1><p>Introducing Appreciation Wall @CODE</p>')
 })
 
+app.get('/posts/new', (request, response) => {
+    response.render('posts/new')
+
+})
+
 app.get('/add', (request, response) =>{
     const name = "CODEr"
     const message = `Hello, ${name}!`
