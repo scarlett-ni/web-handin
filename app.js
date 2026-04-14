@@ -23,9 +23,7 @@ const Post = mongoose.model('Post', postSchema)
 
 
 
-posts.forEach(post => {
-    '<li>' + post + '</li>'
-})
+
 
 app.set('view engine', 'ejs')
 
@@ -41,8 +39,8 @@ app.get('/', (request, response) => {
     response.render('index', {postNumber: postNumber})
 })
 
-app.get('/posts', (request, response) =>{
-    const posts = []
+app.get('/posts', async (request, response) =>{
+    const posts = await Post.find({}).exec()
 
     response.render('posts/index', {
         posts: posts})
