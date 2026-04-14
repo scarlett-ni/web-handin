@@ -9,7 +9,9 @@
         <p>Our appreciation posts: </p>
         <ul>
             <% posts.forEach(post => { %>
-                <li><%= post %></li>
+                <li>
+                    <a href="/posts/<%= posts.slug %>"><%= post.number %></a>
+                    </li>
             <% }) %>
         </ul>
 

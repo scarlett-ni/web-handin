@@ -5,8 +5,8 @@ const app = express()
 const PORT = 3000
 
 const posts = [
-    "1",
-    "2"
+    {number: '1', slug: 'post-1'},
+    {number: '2', slug: 'post-2'}
 ]
 
 posts.forEach(post => {
