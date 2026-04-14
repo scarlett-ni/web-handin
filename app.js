@@ -13,7 +13,8 @@ app.use('/assets', express.static('public'))
 app.use('/photos', express.static('public'))
 
 app.get('/', (request, response) => {
-    response.render('index')
+    const postNumber = 2
+    response.render('index', {postNumber: postNumber})
 })
 
 app.get('/posts', (request, response) =>{
