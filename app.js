@@ -18,8 +18,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/posts', (request, response) =>{
-    console.log(request.query)
-    response.send('Browse our appreciation wall')
+    response.render('posts/index')
 })
 
 app.get('/people/:codeperson', (request, response) => {
