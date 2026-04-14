@@ -94,8 +94,8 @@ app.post('/posts', (request, response) => {
 
     })
     post.save()
-    
-    response.send('Post sent')
+       .then(() => response.send('Post sent'))
+       .catch((error) => response.send('Error: The message could not be sent.'))
 })
 
 
