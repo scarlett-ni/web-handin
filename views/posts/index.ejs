@@ -10,7 +10,7 @@
         <ul>
             <% posts.forEach(post => { %>
                 <li>
-                    <a href="/posts/<%= posts.slug %>"><%= post.number %>. <%= post.name %>:  <%= post.message %>. <%= post.from %></a>
+                    <a href="/posts/<%= post.slug %>"><%= post.number %>. <%= post.name %> </a>
                 </li>
             <% }) %>
         </ul>

@@ -32,8 +32,7 @@ app.use(logger)
 app.use(express.urlencoded({ extended: true }))
 
 
-app.use('/assets', express.static('public'))
-app.use('/photos', express.static('public'))
+app.use(express.static('public'))
 
 app.get('/', (request, response) => {
     const postNumber = 2
@@ -103,11 +102,11 @@ app.post('/posts', (request, response) => {
 
     })
     post.save()
-       .then(() => response.send('Post sent'))
+       .then(() => response.redirect("/posts"))
        .catch((error) => response.send('Error: The message could not be sent.'))
 })
 
-app.post('/cookie/:slug', async (request, response) => {
+app.post('/post/:slug/edit', async (request, response) => {
     try {
         const post = await Post.findOneAndUpdate(
       { slug: request.params.slug }, 
@@ -120,7 +119,7 @@ app.post('/cookie/:slug', async (request, response) => {
   }
 })
 
-app.post('/cookie/:slug', async (request, response) => {
+app.post('/post/:slug', async (request, response) => {
     try {
         const post = await Post.findOneAndUpdate(
       { slug: request.params.slug }, 
@@ -151,29 +150,29 @@ app.get('/people/:codeperson', (request, response) => {
 
 
 
-app.get('/add', (request, response) =>{
-    const name = "CODEr"
-    const message = `Hello, ${name}!`
+// app.get('/add', (request, response) =>{
+//     const name = "CODEr"
+//     const message = `Hello, ${name}!`
 
-    response.send(`${message} Write your appreciation for a CODE community member here!`)
-})
+//     response.send(`${message} Write your appreciation for a CODE community member here!`)
+// })
 
-app.post('/add', (request, response) =>{
-    console.log(`Appreciation submission: `, request.body)
-    response.send('Thank you for appreciating our community member!')
-})
+// app.post('/add', (request, response) =>{
+//     console.log(`Appreciation submission: `, request.body)
+//     response.send('Thank you for appreciating our community member!')
+// })
 
 
 
-app.get('/api/v1/posts', (request, response) => {
-    response.json({
-        posts: [
-            {name: 'Tomas Pereda', codeperson: 'tomas-p', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina', postId: 1},
-            {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper', postId: 2},
+// app.get('/api/v1/posts', (request, response) => {
+//     response.json({
+//         posts: [
+//             {name: 'Tomas Pereda', codeperson: 'tomas-p', message: 'Gracias! For everything, giving a smile every time I come to campus and laughing a little bit! and for your endless help around campus <3', by: 'Cristina', postId: 1},
+//             {name: 'Simon Gneuss, Lukas Kaiser, Laurin Notemann, Julian Gebhard', message: 'THANKS for the Insane Community work you put in', by:'Jesper', postId: 2},
 
-        ]
-    })
-})
+//         ]
+//     })
+// })
 
 app.get('/posts/:slug/delete',async (request, response) => {
     try {
