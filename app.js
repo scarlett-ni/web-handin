@@ -106,12 +106,14 @@ app.post('/posts', (request, response) => {
        .catch((error) => response.send('Error: The message could not be sent.'))
 })
 
-app.post('/post/:slug/edit', async (request, response) => {
+app.post('/posts/:slug/edit', async (request, response) => {
     try {
         const post = await Post.findOneAndUpdate(
       { slug: request.params.slug }, 
       request.body
     )
+    console.log(request.params.slug)
+    response.redirect(`/posts/${post.slug}`)
     
   }catch (error) {
     console.error(error)
@@ -119,7 +121,7 @@ app.post('/post/:slug/edit', async (request, response) => {
   }
 })
 
-app.post('/post/:slug', async (request, response) => {
+app.post('/posts/:slug', async (request, response) => {
     try {
         const post = await Post.findOneAndUpdate(
       { slug: request.params.slug }, 
