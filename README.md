@@ -1,7 +1,34 @@
-## HTML Pages (public)
-1. index.html: homepage and introduction.
-2. posts.html: where you can browse the existing appreciations.
-3. add.html: where you can add new appreciations on the wall. (added forms)
+Web Dev Hand-in (Final)
 
-for hand-in 2:
-app.js
+Overview
+
+This project is a simple full-stack web application built with **Node.js**, **Express**, **EJS**, and **MongoDB**.
+It allows users to create, view, edit, and delete posts on the appreciation wall.
+
+
+
+Features
+
+* Create new posts
+* View all posts
+* View individual posts
+* Edit existing posts
+* Delete posts
+* Server-side rendering with EJS
+* MongoDB database integration
+
+
+Tech Stack
+
+* Backend: Node.js, Express
+* Database: MongoDB with Mongoose
+* Templating Engine: EJS
+* Development Tools: Nodemon, dotenv
+
+
+
+
+
+
+
+
